@@ -1,0 +1,33 @@
+{
+	"version": 3,
+	"settings": {
+		"layout": {
+			"contentSize": "700px",
+			"wideSize": "1100px"
+		},
+		"color": {
+			"palette": [
+				{ "slug": "foreground", "name": "Foreground", "color": "#111111" },
+				{ "slug": "background", "name": "Background", "color": "#ffffff" },
+				{ "slug": "accent", "name": "Accent", "color": "#0073aa" }
+			]
+		},
+		"typography": {
+			"fontSizes": [
+				{ "slug": "small", "size": "0.875rem", "name": "Small" },
+				{ "slug": "normal", "size": "1rem", "name": "Normal" },
+				{ "slug": "large", "size": "1.5rem", "name": "Large" }
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"text": "var(--wp--preset--color--foreground)",
+			"background": "var(--wp--preset--color--background)"
+		},
+		"typography": {
+			"fontSize": "var(--wp--preset--font-size--normal)",
+			"lineHeight": "1.6"
+		}
+	}
+}
