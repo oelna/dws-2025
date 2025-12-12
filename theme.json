@@ -22,12 +22,10 @@
 	},
 	"styles": {
 		"color": {
-			"text": "var(--wp--preset--color--foreground)",
-			"background": "var(--wp--preset--color--background)"
+			
 		},
 		"typography": {
-			"fontSize": "var(--wp--preset--font-size--normal)",
-			"lineHeight": "1.6"
+			
 		}
 	}
 }

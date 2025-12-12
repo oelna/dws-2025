@@ -1,8 +1,16 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
-	<!-- wp:post-title {"level":1} /-->
-	<!-- wp:post-content /-->
-<!-- /wp:group -->
+<!-- wp:columns -->
+	<!-- wp:column {"width":"70%","tagName":"main","className":"page-content"} -->
+		<!-- wp:group {"tagName":"main"} -->
+			<!-- wp:post-title {"level":1} /-->
+			<!-- wp:post-content /-->
+		<!-- /wp:group -->
+	<!-- /wp:column -->
+
+	<!-- wp:column {"width":"30%","className":"sidebar-column"} -->
+		<!-- wp:template-part {"slug":"sidebar","tagName":"aside"} /-->
+	<!-- /wp:column -->
+<!-- /wp:columns -->
 
 <!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
