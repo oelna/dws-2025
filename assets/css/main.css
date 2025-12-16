@@ -1,21 +1,43 @@
 
 /* 1) Design tokens: colors, spacing, typography */
+
+@font-face {
+  font-display: swap;
+  font-family: 'Noto Sans DWS';
+  font-style: normal;
+  font-weight: 100 900;
+  src: url('../fonts/noto-sans-variable.woff2') format('woff2-variations');
+}
+
 :root {
 /* Color scheme hint */
-color-scheme: light dark;
+/* color-scheme: light dark; */
 
 /* Grayscale */
---color-gray-0: #ffffff;
---color-gray-50: #f7f7f7;
---color-gray-100: #e5e5e5;
---color-gray-200: #d4d4d4;
---color-gray-300: #a3a3a3;
---color-gray-600: #525252;
+--color-gray-100: #ffffff;
+--color-gray-200: #f7f7f7;
+--color-gray-300: #e5e5e5;
+--color-gray-400: #d4d4d4;
+--color-gray-500: #a3a3a3;
+--color-gray-600: #a3a3a3;
+--color-gray-700: #525252;
 --color-gray-800: #262626;
 --color-gray-900: #171717;
 
+--color-gray-hue: 60;
+--color-gray-chroma: 0.01;
+--color-gray-100: oklch(0.99 0.005 var(--color-gray-hue));
+--color-gray-200: oklch(0.8 0.007 var(--color-gray-hue));
+--color-gray-300: oklch(0.7 0.010 var(--color-gray-hue));
+--color-gray-400: oklch(0.6 0.013 var(--color-gray-hue));
+--color-gray-500: oklch(0.5 0.013 var(--color-gray-hue));
+--color-gray-600: oklch(0.4 0.011 var(--color-gray-hue));
+--color-gray-700: oklch(0.3 0.010 var(--color-gray-hue));
+--color-gray-800: oklch(0.2 0.009 var(--color-gray-hue));
+--color-gray-900: oklch(0.1 0.008 var(--color-gray-hue));
+
 /* Brand colors (light mode) */
---color-bg: var(--color-gray-200);
+--color-bg: var(--color-gray-100);
 --color-bg-light: var(--color-gray-200);
 --color-bg-medium: var(--color-gray-600);
 --color-bg-dark: var(--color-gray-800);
@@ -27,23 +49,65 @@ color-scheme: light dark;
 --color-primary-text: #ffffff;
 --color-accent: #e63946;
 
+--dws-color-orange-100: hsl(41, 100%, 30%);
+--dws-color-orange-300: hsl(41, 100%, 38%);
+--dws-color-orange-500: hsl(41, 100%, 45%);
+--dws-color-orange-700: hsl(41, 100%, 55%);
+--dws-color-orange-900: hsl(41, 100%, 65%);
+
+--dws-color-sky-100: hsl(202, 85%, 43%);
+--dws-color-sky-300: hsl(202, 80%, 53%);
+--dws-color-sky-500: hsl(202, 77%, 63%);
+--dws-color-sky-700: hsl(198, 83%, 69%);
+--dws-color-sky-900: hsl(190, 90%, 83%);
+
+--dws-color-teal-100: hsl(164, 100%, 19%);
+--dws-color-teal-300: hsl(164, 100%, 26%);
+--dws-color-teal-500: hsl(164, 100%, 31%);
+--dws-color-teal-700: hsl(164, 95%, 41%);
+--dws-color-teal-900: hsl(164, 90%, 51%);
+
+--dws-color-yellow-100: hsl(51, 98%, 44%);
+--dws-color-yellow-300: hsl(53, 93%, 50%);
+--dws-color-yellow-500: hsl(56, 85%, 60%);
+--dws-color-yellow-700: hsl(50, 93%, 70%);
+--dws-color-yellow-900: hsl(47, 100%, 80%);
+
+--dws-color-blue-100: hsl(198, 100%, 26%);
+--dws-color-blue-300: hsl(200, 100%, 32%);
+--dws-color-blue-500: hsl(202, 100%, 35%);
+--dws-color-blue-700: hsl(199, 100%, 42%);
+--dws-color-blue-900: hsl(196, 100%, 48%);
+
+--dws-color-red-100: hsl(23, 100%, 27%);
+--dws-color-red-300: hsl(25, 100%, 35%);
+--dws-color-red-500: hsl(26, 100%, 42%);
+--dws-color-red-700: hsl(27, 100%, 49%);
+--dws-color-red-900: hsl(29, 100%, 59%);
+
+--dws-color-pink-100: 	hsl(327, 65%, 47%);
+--dws-color-pink-300: 	hsl(327, 55%, 56%);
+--dws-color-pink-500: 	hsl(327, 45%, 64%);
+--dws-color-pink-700: 	hsl(327, 60%, 74%);
+--dws-color-pink-900: 	hsl(327, 85%, 84%);
+
 /* Semantic tokens */
---color-link: var(--color-primary);
---color-link-hover: #003f85;
+--color-link: var(--dws-color-blue-500);
+--color-link-hover: color-mix(in srgb, var(--color-link), var(--color-gray-100) 50%);
 
 /* Typography */
---font-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+--font-base: "Noto Sans DWS", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 --font-size-root: 20px;
---line-height-base: 1.5;
+--line-height-base: 1.4;
 
 /* Spacing scale */
 --space-1: 0.25rem;
---space-2: 0.5rem;
---space-3: 0.75rem;
---space-4: 1rem;
---space-5: 1.5rem;
---space-6: 2rem;
+--space-2: calc(var(--space-1) * 2);
+--space-3: calc(var(--space-1) * 3);
+--space-4: calc(var(--space-1) * 4);
+--space-5: calc(var(--space-1) * 6);
+--space-6: calc(var(--space-1) * 8);
 
 --shadow-s:
 	inset 0 1px 2px #ffffff30, /* top highlight */ 
@@ -59,23 +123,29 @@ color-scheme: light dark;
 	0 6px 10px #00000015; /* soft shadow */
 }
 
+@supports (margin: 1lh) {
+	:root {
+		--space-1: 0.25lh;
+	}
+}
+
 /* Dark mode overrides (prefers-color-scheme) */
 @media (prefers-color-scheme: dark) {
 :root {
-	color-scheme: dark;
+	/* color-scheme: dark;
 
 	--color-bg: #050509;
 	--color-surface: #111827;
 	--color-text: #f9fafb;
 	--color-muted: #9ca3af;
 
-	/* Dark-mode-appropriate brand values */
-	--color-primary: #60a5fa;       /* good contrast on dark background */
-	--color-primary-text: #020617;  /* text on primary buttons, etc. */
+	--color-primary: #60a5fa;
+	--color-primary-text: #020617;
 	--color-accent: #f97373;
 
 	--color-link: #93c5fd;
 	--color-link-hover: #bfdbfe;
+	 */
 }
 }
 
@@ -83,6 +153,13 @@ color-scheme: light dark;
 
 *, *::before, *::after {
 	box-sizing: border-box;
+}
+
+*:focus-visible {
+	outline-color: currentColor;
+	outline-offset: 0.1em;
+	outline-style: solid;
+	outline-width: 2px;
 }
 
 html {
@@ -118,6 +195,8 @@ ul, ol {
 	list-style-position: inside;
 }
 
+/* Custom Theme styles */
+
 html {
 	
 }
@@ -127,6 +206,7 @@ body {
 	color: var(--color-text);
 	font-family: var(--font-base);
 	font-size: var(--font-size-root);
+	font-weight: 440;
 	line-height: var(--line-height-base);
 
 	padding-block: 2rem 8rem;
@@ -146,10 +226,16 @@ a:focus-visible {
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 600;
-	line-height: 1.2;
+	line-height: 1.05;
 	color: var(--color-text);
-	margin-top: 0;
-	margin-bottom: var(--space-3);
+	margin-block-start: 0;
+	margin-block-end: var(--space-1);
+}
+
+h1 { margin-block-end: var(--space-3); }
+
+* + :is(h1, h2, h3, h4, h5, h6) {
+	margin-block-start: var(--space-4);
 }
 
 p {
@@ -191,6 +277,11 @@ button:focus-visible,
 .wp-element-button:hover,
 .wp-element-button:focus-visible {
 	filter: brightness(1.05);
+}
+
+.wp-block-navigation .is-menu-open {
+	/* background-color: red !important; */
+	padding: 2rem;
 }
 
 /* Base container width */
@@ -245,6 +336,15 @@ button:focus-visible,
 		margin-inline: 0;
 		padding: var(--space-3);
 	}
+
+	.wp-block-table {
+
+		margin-block: var(--space-2);
+
+		:is(th, td) {
+			border-inline: 0;
+		}
+	}
 }
 
 aside {
@@ -257,10 +357,18 @@ aside {
 		
 	}
 
+	.wp-block-table {
+		margin-block: var(--space-2);
+	}
+
 	.wp-block-table :is(th, td) {
 		border-color: #bbb;
 		border-inline: 0;
 		padding: 0;
+	}
+
+	.wp-block-table td:last-child {
+		
 	}
 
 	.wp-block-group {
@@ -283,4 +391,18 @@ header {
 footer {
 	grid-column-start: 1;
 	grid-column-end: 3;
+}
+
+footer .color-grid {
+	margin-block: 2rem;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-auto-rows: 100px;
+
+	ul { display: contents; }
+	li {
+		width: 100%;
+		height: 100%;
+		list-style: none;
+	}
 }

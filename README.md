@@ -7,5 +7,5 @@
 - Responsive
 - Barrierefrei (Farben, Texte, Größen, leichte Sprache)
 - Git, Github für Theme Daten
-- 
+- Information der alten Seite zusammenstellen
 
