@@ -6,17 +6,84 @@
 			"wideSize": "1100px"
 		},
 		"color": {
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"defaultDuotone": false,
+			"custom": false,
+			"customGradient": false,
+			"customDuotone": false,
 			"palette": [
-				{ "slug": "foreground", "name": "Foreground", "color": "#111111" },
-				{ "slug": "background", "name": "Background", "color": "#ffffff" },
-				{ "slug": "accent", "name": "Accent", "color": "#0073aa" }
+				{ "slug": "dws-orange-100", "name": "DWS Orange Darkest", "color": "hsl(41, 100%, 30%)" },
+				{ "slug": "dws-orange-300", "name": "DWS Orange Dark", "color": "hsl(41, 100%, 38%)" },
+				{ "slug": "dws-orange-500", "name": "DWS Orange", "color": "hsl(41, 100%, 45%)" },
+				{ "slug": "dws-orange-700", "name": "DWS Orange Light", "color": "hsl(41, 100%, 55%)" },
+				{ "slug": "dws-orange-900", "name": "DWS Orange Lightest", "color": "hsl(41, 100%, 65%)" },
+
+				{ "slug": "dws-sky-100", "name": "DWS Sky Darkest", "color": "hsl(202, 85%, 43%)" },
+				{ "slug": "dws-sky-300", "name": "DWS Sky Dark", "color": "hsl(202, 80%, 53%)" },
+				{ "slug": "dws-sky-500", "name": "DWS Sky", "color": "hsl(202, 77%, 63%)" },
+				{ "slug": "dws-sky-700", "name": "DWS Sky Light", "color": "hsl(198, 83%, 69%)" },
+				{ "slug": "dws-sky-900", "name": "DWS Sky Lightest", "color": "hsl(190, 90%, 83%)" },
+
+				{ "slug": "dws-teal-100", "name": "DWS Teal Darkest", "color": "hsl(164, 100%, 19%)" },
+				{ "slug": "dws-teal-300", "name": "DWS Teal Dark", "color": "hsl(164, 100%, 26%)" },
+				{ "slug": "dws-teal-500", "name": "DWS Teal", "color": "hsl(164, 100%, 31%)" },
+				{ "slug": "dws-teal-700", "name": "DWS Teal Light", "color": "hsl(164, 95%, 41%)" },
+				{ "slug": "dws-teal-900", "name": "DWS Teal Lightest", "color": "hsl(164, 90%, 51%)" },
+
+				{ "slug": "dws-yellow-100", "name": "DWS Yellow Darkest", "color": "hsl(51, 98%, 44%)" },
+				{ "slug": "dws-yellow-300", "name": "DWS Yellow Dark", "color": "hsl(53, 93%, 50%)" },
+				{ "slug": "dws-yellow-500", "name": "DWS Yellow", "color": "hsl(56, 85%, 60%)" },
+				{ "slug": "dws-yellow-700", "name": "DWS Yellow Light", "color": "hsl(50, 93%, 70%)" },
+				{ "slug": "dws-yellow-900", "name": "DWS Yellow Lightest", "color": "hsl(47, 100%, 80%)" },
+
+				{ "slug": "dws-blue-100", "name": "DWS Blue Darkest", "color": "hsl(198, 100%, 26%)" },
+				{ "slug": "dws-blue-300", "name": "DWS Blue Dark", "color": "hsl(200, 100%, 32%)" },
+				{ "slug": "dws-blue-500", "name": "DWS Blue", "color": "hsl(202, 100%, 35%)" },
+				{ "slug": "dws-blue-700", "name": "DWS Blue Light", "color": "hsl(199, 100%, 42%)" },
+				{ "slug": "dws-blue-900", "name": "DWS Blue Lightest", "color": "hsl(196, 100%, 48%)" },
+
+				{ "slug": "dws-red-100", "name": "DWS Red Darkest", "color": "hsl(23, 100%, 27%)" },
+				{ "slug": "dws-red-300", "name": "DWS Red Dark", "color": "hsl(25, 100%, 35%)" },
+				{ "slug": "dws-red-500", "name": "DWS Red", "color": "hsl(26, 100%, 42%)" },
+				{ "slug": "dws-red-700", "name": "DWS Red Light", "color": "hsl(27, 100%, 49%)" },
+				{ "slug": "dws-red-900", "name": "DWS Red Lightest", "color": "hsl(29, 100%, 59%)" },
+
+				{ "slug": "dws-pink-100", "name": "DWS Pink Darkest", "color": "hsl(327, 65%, 47%)" },
+				{ "slug": "dws-pink-300", "name": "DWS Pink Dark", "color": "hsl(327, 55%, 56%)" },
+				{ "slug": "dws-pink-500", "name": "DWS Pink", "color": "hsl(327, 45%, 64%)" },
+				{ "slug": "dws-pink-700", "name": "DWS Pink Light", "color": "hsl(327, 60%, 74%)" },
+				{ "slug": "dws-pink-900", "name": "DWS Pink Lightest", "color": "hsl(327, 85%, 84%)" },
+
+				{ "slug": "dws-gray-100", "name": "DWS Gray 100", "color": "light-dark(oklch(0.99 0.005 60), oklch(0.1 0.008 60))" },
+				{ "slug": "dws-gray-200", "name": "DWS Gray 200", "color": "light-dark(oklch(0.8 0.007 60), oklch(0.2 0.009 60))" },
+				{ "slug": "dws-gray-300", "name": "DWS Gray 300", "color": "light-dark(oklch(0.7 0.010 60), oklch(0.3 0.010 60))" },
+				{ "slug": "dws-gray-400", "name": "DWS Gray 400", "color": "light-dark(oklch(0.6 0.013 60), oklch(0.4 0.011 60))" },
+				{ "slug": "dws-gray-500", "name": "DWS Gray 500", "color": "light-dark(oklch(0.5 0.013 60), oklch(0.5 0.013 60))" },
+				{ "slug": "dws-gray-600", "name": "DWS Gray 600", "color": "light-dark(oklch(0.4 0.011 60), oklch(0.6 0.013 60))" },
+				{ "slug": "dws-gray-700", "name": "DWS Gray 700", "color": "light-dark(oklch(0.3 0.010 60), oklch(0.7 0.010 60))" },
+				{ "slug": "dws-gray-800", "name": "DWS Gray 800", "color": "light-dark(oklch(0.2 0.009 60), oklch(0.8 0.007 60))" },
+				{ "slug": "dws-gray-900", "name": "DWS Gray 900", "color": "light-dark(oklch(0.1 0.008 60), oklch(0.99 0.005 60))" }
 			]
 		},
+		"spacing": {
+			"defaultSpacingSizes": true,
+			"margin": true,
+			"padding": true,
+			"customSpacingSize": false
+		},
 		"typography": {
+			"fluid": true,
 			"fontSizes": [
-				{ "slug": "small", "size": "0.875rem", "name": "Small" },
-				{ "slug": "normal", "size": "1rem", "name": "Normal" },
-				{ "slug": "large", "size": "1.5rem", "name": "Large" }
+				{ "slug": "small", "name": "Small", "size": "0.875rem" },
+				{ "slug": "normal", "name": "Normal", "size": "1rem" },
+				{ "slug": "large", "name": "Large", "size": "1.5rem" },
+				{
+					"slug": "h1",
+					"name": "Heading 1",
+					"size": "clamp(2rem, 5vw + 1rem, 4rem)",
+					"fluid": true
+				}
 			]
 		}
 	},
