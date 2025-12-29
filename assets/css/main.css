@@ -200,11 +200,11 @@ h1 {
 }
 
 h2 {
-	font-size: clamp(1.2rem, 1.3vw + 0.9rem, 1.5rem);;
+	font-size: clamp(1.2rem, 1.3vw + 0.9rem, 1.5rem);
 }
 
 h3 {
-	font-size: clamp(1.1rem, 0.85vw + 0.9rem, 1.3rem);;
+	font-size: clamp(1.1rem, 0.85vw + 0.9rem, 1.3rem);
 }
 
 * + :is(h1, h2, h3, h4, h5, h6) {
@@ -253,6 +253,69 @@ button:focus-visible,
 }
 
 /* site logo */
+header .logo-link {
+
+}
+
+@keyframes fenster-fade-dark {
+	0% {
+		fill: transparent;
+		stroke: white;
+	} 
+	100% {
+		fill: var(--wp--preset--color--dws-orange-500);
+		stroke: var(--wp--preset--color--dws-orange-500);
+	}
+}
+
+@keyframes fenster-fade-light {
+	0% {
+		fill: transparent;
+	} 
+	100% {
+		fill: var(--wp--preset--color--dws-orange-500);
+	}
+}
+
+header .logo-link svg {
+	width: 10rem;
+	height: auto;
+	aspect-ratio: 2 / 1;
+
+	#kontur path {
+		fill: var(--wp--preset--color--dws-gray-900, #888);
+		transition: fill 0.3s;
+	}
+
+	#fenster rect {
+		animation: 0.5s fenster-fade-light forwards;
+		stroke: var(--wp--preset--color--dws-gray-900, #888);
+		stroke-width: 6px;
+		transition: all 0.3s;
+	}
+
+	&:hover {
+		#kontur path {
+			fill: var(--wp--preset--color--dws-teal-500);
+		}
+		#fenster rect {
+			stroke: var(--wp--preset--color--dws-teal-500);
+		}
+	}
+}
+
+[data-mode="dark"] #fenster rect {
+	animation: 0.5s fenster-fade-dark forwards;
+	stroke: var(--wp--preset--color--dws-gray-100);
+	/* fill: var(--wp--preset--color--dws-orange-500); */
+	fill: transparent;
+}
+
+.wp-block-site-title {
+	width: 10rem;
+	margin-block-start: 0.2rem;
+}
+
 .wp-block-site-title a {
 	display: block;
 	box-sizing: content-box;
@@ -267,12 +330,14 @@ button:focus-visible,
 	aspect-ratio: 1.963898917 / 1;
 	background-image: url('../img/logo-diesterweg-web-light.svg');
 	*/
+
+	/*
 	width: 10rem;
-	padding-block-start: 5.25rem;
+	margin-block-start: 0.2rem;
 	background-image: url('../img/logo-diesterweg-mini-light.svg');
 	background-size: contain;
 	background-repeat: no-repeat;
-
+	*/
 	&:hover {
 		color: currentColor;
 	}
@@ -280,7 +345,7 @@ button:focus-visible,
 
 [data-mode="dark"] .wp-block-site-title a {
 	/* background-image: url('../img/logo-diesterweg-web-dark.svg'); */
-	background-image: url('../img/logo-diesterweg-mini-dark.svg');
+	/* background-image: url('../img/logo-diesterweg-mini-dark.svg'); */
 }
 
 /* NAV custom styles */

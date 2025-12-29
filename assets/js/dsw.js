@@ -28,3 +28,14 @@ modeToggle?.addEventListener('change', function (event) {
 
 	// console.log('manually set mode to', manualMode);
 });
+
+// logo animation
+document.querySelectorAll('.logo-link svg #fenster rect')?.forEach(function (fenster, i) {
+
+	console.log(fenster, i);
+	fenster.style.backgroundColor = 'transparent';
+	const randomDelay = Math.floor(Math.random() * 1500) + 200;
+	// fenster.style.animationDelay = (i*20) + 'ms';
+	fenster.style.animationDelay = randomDelay + 'ms';
+});
+

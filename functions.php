@@ -35,3 +35,12 @@ add_filter('the_permalink', 'dws_relative_url');
 add_filter('wp_get_attachment_url', 'dws_relative_url');
 add_filter('script_loader_src', 'dws_relative_url');
 add_filter('style_loader_src', 'dws_relative_url');
+
+function dws_favicon() {
+	echo('<link rel="icon" href="'.get_template_directory_uri().'/assets/img/favicon.svg" sizes="any" type="image/svg+xml">' . "\n");
+	echo('<link rel="icon" href="'.get_template_directory_uri().'/assets/img/favicon.ico" sizes="32x32" type="image/x-icon">' . "\n");
+}
+
+add_action('wp_head', 'dws_favicon');
+add_action('admin_head', 'dws_favicon');
+add_action('login_head', 'dws_favicon');
