@@ -12,8 +12,8 @@ add_action('enqueue_block_assets', function () {
 	);
 
 	wp_enqueue_script(
-		'dsw-main-js', 
-		get_theme_file_uri('assets/js/dsw.js'), 
+		'dws-main-js', 
+		get_theme_file_uri('assets/js/dws.js'), 
 		null, 
 		$theme->get('Version'), 
 		true
