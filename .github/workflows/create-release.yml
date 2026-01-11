@@ -44,12 +44,6 @@ jobs:
             --exclude "dist" \
             ./ "dist/${THEME_SLUG}/"
 
-          # create zip
-          (
-            cd dist
-            zip -r "${THEME_SLUG}.zip" "${THEME_SLUG}"
-          )
-
       - name: Set version in style.css
         id: ver
         shell: bash
@@ -76,6 +70,18 @@ jobs:
           rm -f "${STYLE}.bak"
 
           echo "version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Package zip
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          THEME_SLUG="dws-2025"
+
+          (
+            cd dist
+            zip -r "${THEME_SLUG}.zip" "${THEME_SLUG}"
+          )
 
       - name: Release
         id: release
