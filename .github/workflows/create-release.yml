@@ -57,7 +57,7 @@ jobs:
           set -euo pipefail
 
           THEME_SLUG="dws-2025"
-          NEW_VERSION="1.0.${GITHUB_RUN_NUMBER}"
+          NEW_VERSION="1.0.${{ github.run_number }}"
 
           STYLE="dist/${THEME_SLUG}/style.css"
           if [ ! -f "$STYLE" ]; then
