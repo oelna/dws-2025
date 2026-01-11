@@ -26,7 +26,7 @@ jobs:
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Build
-        run: echo ${{ github.sha }} > Release.txt
+        run: echo "${{ github.sha }} ${{ steps.theme.outputs.version }}" > Release.txt
       - name: Test
         run: cat Release.txt
       - name: Release
