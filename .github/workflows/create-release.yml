@@ -31,6 +31,25 @@ jobs:
       - name: Build
         run: echo "${{ github.sha }} ${{ steps.theme.outputs.version }}" > Release.txt
 
+      - name: Build theme zip
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          THEME_SLUG="dws-2025"
+          mkdir -p "dist/${THEME_SLUG}"
+
+          # exclude dist to avoid recursion
+          rsync -a --delete \
+            --exclude "dist" \
+            ./ "dist/${THEME_SLUG}/"
+
+          # create zip
+          (
+            cd dist
+            zip -r "${THEME_SLUG}.zip" "${THEME_SLUG}"
+          )
+
       - name: Set version in style.css
         id: ver
         shell: bash
@@ -50,25 +69,6 @@ jobs:
           sed -i -E "s/^Version:[[:space:]]*.*/Version: ${NEW_VERSION}/" "$STYLE"
 
           echo "version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
-        
-      - name: Build theme zip
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          THEME_SLUG="dws-2025"
-          mkdir -p "dist/${THEME_SLUG}"
-
-          # exclude dist to avoid recursion
-          rsync -a --delete \
-            --exclude "dist" \
-            ./ "dist/${THEME_SLUG}/"
-
-          # create zip
-          (
-            cd dist
-            zip -r "${THEME_SLUG}.zip" "${THEME_SLUG}"
-          )
 
       - name: Release
         id: release
