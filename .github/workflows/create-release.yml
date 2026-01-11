@@ -30,6 +30,26 @@ jobs:
 
       - name: Build
         run: echo "${{ github.sha }} ${{ steps.theme.outputs.version }}" > Release.txt
+
+      - name: Set version in style.css
+        id: ver
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          THEME_SLUG="dws-2025"
+          NEW_VERSION="1.0.${GITHUB_RUN_NUMBER}"
+
+          STYLE="dist/${THEME_SLUG}/style.css"
+          if [ ! -f "$STYLE" ]; then
+            echo "Missing $STYLE" >&2
+            exit 1
+          fi
+
+          # Replace the first match
+          sed -i -E "s/^Version:[[:space:]]*.*/Version: ${NEW_VERSION}/" "$STYLE"
+
+          echo "version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
         
       - name: Build theme zip
         shell: bash
