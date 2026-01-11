@@ -14,16 +14,29 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Read theme version
+        id: theme
+        shell: bash
+        run: |
+          VERSION="$(awk -F': *' 'tolower($1)=="version" {print $2; exit}' style.css | tr -d '\r')"
+          if [ -z "$VERSION" ]; then
+            echo "Version not found in style.css" >&2
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Build
+        run: echo ${{ github.sha }} > Release.txt
+      - name: Test
+        run: cat Release.txt
+      - name: Release
+        id: release
+        uses: softprops/action-gh-release@v2
+        # if: github.ref_type == 'tag'
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Bug fixes and
-            performance improvements.
-          draft: false
-          prerelease: false
+          tag_name: "v${{ steps.theme.outputs.version }}"
+          name: "v${{ steps.theme.outputs.version }}"
+          make_latest: true
+          files: ./*
+      - name: Print receipt
+        run: echo "${{ steps.release.outputs }}"
