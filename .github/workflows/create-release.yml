@@ -48,7 +48,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Print receipt
+        shell: bash
         run: |
-          echo "${{ fromJSON(steps.release.outputs.id) }}"
-          echo "${{ fromJSON(steps.release.outputs.url) }}"
-          echo "${{ fromJSON(steps.release.outputs.assets) }}"
+          echo '${{ toJson(steps.release.outputs) }}'
