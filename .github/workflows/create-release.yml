@@ -97,3 +97,12 @@ jobs:
         shell: bash
         run: |
           echo '${{ toJson(steps.release.outputs) }}'
+      - name: Debug environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          which sed || true
+          sed --version || true
+          ls -la
+          ls -la dist/dws-2025 || true
+          head -n 20 dist/dws-2025/style.css || true
