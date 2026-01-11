@@ -44,3 +44,40 @@ function dws_favicon() {
 add_action('wp_head', 'dws_favicon');
 add_action('admin_head', 'dws_favicon');
 add_action('login_head', 'dws_favicon');
+
+// INACTIVE FOR NOW
+// Automatic theme updates from the GitHub repository: https://gist.github.com/slfrsn/a75b2b9ef7074e22ce3b
+// add_filter('pre_set_site_transient_update_themes', 'automatic_GitHub_updates', 100, 1);
+function automatic_GitHub_updates($data) {
+	// Theme information
+	$theme   = get_stylesheet(); // Folder name of the current theme
+	$current = wp_get_theme()->get('Version'); // Get the version of the current theme
+	// GitHub information
+	$user = 'oelna'; // The GitHub username hosting the repository
+	$repo = 'dws-2025'; // Repository name as it appears in the URL
+	// Get the latest release tag from the repository. The User-Agent header must be sent, as per
+	// GitHub's API documentation: https://developer.github.com/v3/#user-agent-required
+	$file = @json_decode(@file_get_contents('https://api.github.com/repos/'.$user.'/'.$repo.'/releases/latest', false,
+			stream_context_create(['http' => ['header' => "User-Agent: ".$user."\r\n"]])
+	));
+	if($file) {
+		// $update = filter_var($file->tag_name, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+		$update = preg_replace('/^(v|ver|version)?\s*/', '', $file->tag_name);
+		// Only return a response if the new version number is higher than the current version
+		// if($update > $current) {
+		if(version_compare($update, $current, '>')) {
+			$data->response[$theme] = array(
+				'theme'       => $theme,
+				// Strip the version number of any non-alpha characters (excluding the period)
+				// This way you can still use tags like v1.1 or ver1.1 if desired
+				'new_version' => $update,
+				'url'         => 'https://github.com/'.$user.'/'.$repo,
+				'package'     => $file->assets[0]->browser_download_url,
+			);
+			// echo('a new version is available!');
+		} else {
+			// echo('no new version.');
+		}
+	}
+	return $data;
+}
