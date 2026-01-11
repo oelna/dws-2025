@@ -67,7 +67,9 @@ jobs:
 
           # Replace the first match
           #sed -i -E "s/^Version:[[:space:]]*.*/Version: ${NEW_VERSION}/" "$STYLE"
-          sed -E -i "s/^([[:space:]]*\*?[[:space:]]*)Version:[[:space:]]*.*/\1Version: ${NEW_VERSION}/" "$STYLE"
+          #sed -E -i "s/^([[:space:]]*\*?[[:space:]]*)Version:[[:space:]]*.*/\1Version: ${NEW_VERSION}/" "$STYLE"
+          sed -E -i.bak "s/^([[:space:]]*\*?[[:space:]]*)Version:[[:space:]]*.*/\1Version: ${NEW_VERSION}/" "$STYLE"
+          rm -f "${STYLE}.bak"
 
           echo "version=${NEW_VERSION}" >> "$GITHUB_OUTPUT"
 
