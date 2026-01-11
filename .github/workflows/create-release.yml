@@ -30,8 +30,26 @@ jobs:
 
       - name: Build
         run: echo "${{ github.sha }} ${{ steps.theme.outputs.version }}" > Release.txt
-      - name: Test
-        run: cat Release.txt
+        
+      - name: Build theme zip
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          THEME_SLUG="dws-2025"
+          mkdir -p "dist/${THEME_SLUG}"
+
+          # exclude dist to avoid recursion
+          rsync -a --delete \
+            --exclude "dist" \
+            ./ "dist/${THEME_SLUG}/"
+
+          # create zip
+          (
+            cd dist
+            zip -r "${THEME_SLUG}.zip" "${THEME_SLUG}"
+          )
+
       - name: Release
         id: release
         uses: softprops/action-gh-release@v2
@@ -42,11 +60,12 @@ jobs:
           #tag_name: "v${{ steps.theme.outputs.version }}"
           tag_name: "v1.0.${{ github.run_number }}"
           make_latest: true
-          files: ./Release.txt
+          files: dist/dws-2025.zip
           #generate_release_notes: true
           preserve_order: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Print receipt
         shell: bash
         run: |
