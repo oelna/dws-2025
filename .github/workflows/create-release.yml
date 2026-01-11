@@ -1,3 +1,5 @@
+name: Create Release
+
 on:
   workflow_dispatch:
   #push:
@@ -5,7 +7,8 @@ on:
     #tags:
       #- 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
-name: Create Release
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -34,9 +37,14 @@ jobs:
         uses: softprops/action-gh-release@v2
         # if: github.ref_type == 'tag'
         with:
-          tag_name: "v${{ steps.theme.outputs.version }}"
           name: "v${{ steps.theme.outputs.version }}"
+          #tag_name: "v${{ steps.theme.outputs.version }}"
+          tag_name: "v1.0.${{ github.run_number }}"
           make_latest: true
           files: ./*
+          #generate_release_notes: true
+          preserve_order: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Print receipt
         run: echo "${{ steps.release.outputs }}"
