@@ -397,13 +397,15 @@ header .logo-link svg {
 			.wp-block-navigation-item {
 				outline: 0px solid cyan;
 				background-color: var(--wp--preset--color--dws-gray-200);
+				color: var(--wp--preset--color--dws-gray-900);
 
 				&:is(:hover, :focus) {
 					background-color: color-mix(in srgb, var(--wp--preset--color--dws-gray-200) 35%, transparent);
 				}
 
 				a {
-					color: var(--wp--preset--color--dws-gray-900) !important;
+					/* color: var(--wp--preset--color--dws-gray-900) !important; */
+					color: currentColor !important;
 				}
 			}
 		}
@@ -411,7 +413,7 @@ header .logo-link svg {
 		.wp-block-navigation-item.current-menu-item {
 			--nav-item-bg: var(--wp--preset--color--dws-yellow-900);
 			background-color: var(--nav-item-bg);
-			color: color-mix(in oklch, var(--nav-item-bg), #900 60%);
+			color: color-mix(in oklch, var(--nav-item-bg), #900 60%) !important;
 
 			&:is(:hover, :focus) {
 				--nav-item-bg: var(--wp--preset--color--dws-orange-900);

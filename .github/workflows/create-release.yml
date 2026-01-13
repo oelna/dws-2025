@@ -10,6 +10,9 @@ on:
 permissions:
   contents: write
 
+env:
+  THEME_SLUG: dws-2025
+
 jobs:
   build:
     name: Create Release
@@ -29,14 +32,15 @@ jobs:
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Build
-        run: echo "${{ github.sha }} ${{ steps.theme.outputs.version }}" > Release.txt
+        # run: echo "${{ github.sha }} ${{ steps.theme.outputs.version }}" > Release.txt
+        run: echo "${{ github.sha }} ${{ steps.theme.outputs.version }}"
 
       - name: Build theme zip
         shell: bash
         run: |
           set -euo pipefail
 
-          THEME_SLUG="dws-2025"
+          #THEME_SLUG="dws-2025"
           mkdir -p "dist/${THEME_SLUG}"
 
           # exclude dist to avoid recursion
@@ -50,7 +54,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          THEME_SLUG="dws-2025"
+          #THEME_SLUG="dws-2025"
           NEW_VERSION="1.0.${{ github.run_number }}"
           STYLE="dist/${THEME_SLUG}/style.css"
 
@@ -76,7 +80,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          THEME_SLUG="dws-2025"
+          #THEME_SLUG="dws-2025"
 
           (
             cd dist
@@ -93,7 +97,7 @@ jobs:
           #tag_name: "v${{ steps.theme.outputs.version }}"
           tag_name: "v1.0.${{ github.run_number }}"
           make_latest: true
-          files: dist/dws-2025.zip
+          files: "dist/${THEME_SLUG}.zip"
           #generate_release_notes: true
           preserve_order: true
         env:
@@ -110,5 +114,5 @@ jobs:
           which sed || true
           sed --version || true
           ls -la
-          ls -la dist/dws-2025 || true
-          head -n 20 dist/dws-2025/style.css || true
+          ls -la dist/${THEME_SLUG} || true
+          head -n 20 dist/${THEME_SLUG}/style.css || true
